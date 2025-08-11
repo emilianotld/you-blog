@@ -1,6 +1,4 @@
-import { Token } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
-import { use } from "react";
 
 const initialState = {
   mode: "light",

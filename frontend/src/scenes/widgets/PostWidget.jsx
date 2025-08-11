@@ -12,7 +12,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "states";
 import FlexStart from "components/FlexStart";
-
+const API = process.env.REACT_APP_API;
 const PostWidget = ({
   postId,
   postUserId,
@@ -36,7 +36,7 @@ const PostWidget = ({
   const main = palette.neutral.main;
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`${API}/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`http://localhost:3001/assets/${picturePath}`}
+          src={`${process.env.REACT_APP_API}/assets/${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">

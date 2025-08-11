@@ -16,6 +16,8 @@ import { setLogin } from "states";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 
+const API = process.env.REACT_APP_API;
+
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
   lastName: yup.string().required("required"),
@@ -64,13 +66,10 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     try {
-      const savedUserResponse = await fetch(
-        "http://localhost:3001/auth/register",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const savedUserResponse = await fetch(`${API}/auth/register`, {
+        method: "POST",
+        body: formData,
+      });
 
       if (!savedUserResponse.ok) {
         throw new Error("Failed to register user");
@@ -88,7 +87,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    const loggedInResponse = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
