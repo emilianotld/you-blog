@@ -4,7 +4,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setFriends } from "states";
-
+const API = process.env.REACT_APP_API;
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
@@ -17,13 +17,10 @@ const FriendListWidget = ({ userId }) => {
 
   const getFriends = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3001/users/${userId}/friends`,
-        {
-          method: "GET",
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const response = await fetch(`${API}/users/${userId}/friends`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch friends");
       }

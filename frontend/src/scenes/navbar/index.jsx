@@ -9,7 +9,6 @@ import {
   FormControl,
   useTheme,
   useMediaQuery,
-  Icon,
 } from "@mui/material";
 import {
   Search,
@@ -20,11 +19,10 @@ import {
   Help,
   Menu,
   Close,
-  Home,
 } from "@mui/icons-material"; // https://mui.com/material-ui/material-icons/
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout, setMode } from "states";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
 
 const Navbar = () => {

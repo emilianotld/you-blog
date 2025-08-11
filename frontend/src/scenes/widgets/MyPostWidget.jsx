@@ -25,7 +25,7 @@ import UserImage from "components/UserImage";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "states";
-
+const API = process.env.REACT_APP_API;
 const MyPostWidget = ({ picturePath }) => {
   const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
@@ -47,7 +47,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch(`${API}/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,

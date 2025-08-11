@@ -7,7 +7,7 @@ import FriendListWidget from "scenes/widgets/FriendListWidget";
 import UserWidget from "scenes/widgets/UserWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
-
+const API = process.env.REACT_APP_API;
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
@@ -16,7 +16,7 @@ const ProfilePage = () => {
 
   const getUser = async () => {
     // Fetch user data based on userId from URL params
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const response = await fetch(`${API}/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
