@@ -24,8 +24,8 @@ This is a full-stack responsive social media application built using the MERN st
 Create a `.env` file inside the `/backend` directory and add:
 
    ```env
-   MONGO_URI=<your-mongodb-uri>
-   JWT_SECRET=<your-jwt-secret>
+   MONGO_URI=
+   JWT_SECRET=miclaveultrasecreta
    PORT=6001
    ```
 
